@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bonabola · Reporte Meta Ads · Marzo 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0e1a;
+  --surface:#111827;
+  --border:rgba(255,255,255,0.07);
+  --accent:#00d4aa;
+  --accent2:#ff6b35;
+  --accent3:#7c3aed;
+  --text:#e8eaf0;
+  --muted:#6b7a9a;
+  --good:#10b981;
+  --warn:#f59e0b;
+  --bad:#ef4444;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:clamp(14px,1.5vw,16px);line-height:1.6;}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:12px clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.topbar-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(14px,1.8vw,18px);letter-spacing:0.15em;color:var(--text);}
+.topbar-badge{background:rgba(0,212,170,0.12);border:1px solid rgba(0,212,170,0.3);color:var(--accent);font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;white-space:nowrap;letter-spacing:0.05em;}
+
+/* HEADER */
+.header{position:relative;padding:clamp(48px,8vw,100px) clamp(16px,6vw,80px) clamp(40px,6vw,72px);overflow:hidden;border-bottom:1px solid var(--border);}
+.header::before{content:'';position:absolute;top:-120px;right:-80px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,170,0.08) 0%,transparent 70%);pointer-events:none;}
+.header::after{content:'';position:absolute;bottom:-80px;left:60px;width:400px;height:400px;background:radial-gradient(circle,rgba(124,58,237,0.06) 0%,transparent 70%);pointer-events:none;}
+.header-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;}
+.header-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,6vw,72px);line-height:1.05;margin-bottom:16px;}
+.header-title span{color:var(--accent);}
+.header-sub{font-size:clamp(14px,1.8vw,18px);color:var(--muted);max-width:600px;margin-bottom:40px;}
+.header-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;max-width:700px;}
+.header-meta-item{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:14px 18px;}
+.header-meta-label{font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:4px;}
+.header-meta-value{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--text);}
+
+/* SECTIONS */
+.section{padding:clamp(40px,6vw,72px) clamp(16px,6vw,80px);}
+.section+.section{border-top:1px solid var(--border);}
+.section-number{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;}
+.section-heading{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(22px,3.5vw,40px);line-height:1.1;margin-bottom:clamp(24px,4vw,48px);}
+
+/* KPI CARDS */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:32px;}
+.kpi-card{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent-color,var(--accent));border-radius:12px;padding:20px 22px;position:relative;}
+.kpi-label{font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:8px;}
+.kpi-value{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(22px,3vw,32px);line-height:1;margin-bottom:8px;}
+.kpi-sub{font-size:12px;color:var(--muted);}
+.kpi-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;margin-top:6px;}
+.badge-good{background:rgba(16,185,129,0.15);color:var(--good);}
+.badge-warn{background:rgba(245,158,11,0.15);color:var(--warn);}
+.badge-bad{background:rgba(239,68,68,0.15);color:var(--bad);}
+.badge-info{background:rgba(0,212,170,0.12);color:var(--accent);}
+
+/* ALERTS */
+.alert{border-radius:10px;padding:14px 18px;font-size:13px;margin-bottom:12px;border-left:3px solid;}
+.alert-good{background:rgba(16,185,129,0.08);border-color:var(--good);color:#a7f3d0;}
+.alert-warn{background:rgba(245,158,11,0.08);border-color:var(--warn);color:#fde68a;}
+.alert-info{background:rgba(0,212,170,0.08);border-color:var(--accent);color:#a7f3d0;}
+.alert strong{font-weight:700;}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead{background:rgba(255,255,255,0.04);}
+th{padding:12px 16px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:700;white-space:nowrap;}
+td{padding:12px 16px;border-top:1px solid var(--border);vertical-align:middle;}
+tr:hover td{background:rgba(255,255,255,0.025);}
+.num{font-family:'Syne',sans-serif;font-weight:700;}
+
+/* TAGS */
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:0.05em;}
+.tag-broad{background:rgba(0,212,170,0.15);color:var(--accent);}
+.tag-padel{background:rgba(124,58,237,0.15);color:#a78bfa;}
+.tag-stories{background:rgba(255,107,53,0.15);color:var(--accent2);}
+.tag-reels{background:rgba(124,58,237,0.15);color:#a78bfa;}
+.tag-feed{background:rgba(16,185,129,0.15);color:var(--good);}
+.tag-male{background:rgba(59,130,246,0.15);color:#93c5fd;}
+.tag-female{background:rgba(236,72,153,0.15);color:#f9a8d4;}
+.tag-active{background:rgba(16,185,129,0.15);color:var(--good);}
+.tag-inactive{background:rgba(239,68,68,0.15);color:var(--bad);}
+
+/* AD RANK */
+.ad-rank{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;}
+.rank-top{background:rgba(0,212,170,0.15);color:var(--accent);}
+.rank-bot{background:rgba(239,68,68,0.1);color:var(--bad);}
+
+/* BAR CHART */
+.bar-section{margin-bottom:32px;}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.bar-label{font-size:12px;color:var(--muted);width:clamp(60px,12vw,120px);text-align:right;flex-shrink:0;}
+.bar-track{flex:1;background:rgba(255,255,255,0.06);border-radius:99px;height:28px;position:relative;overflow:hidden;}
+.bar-fill{height:100%;border-radius:99px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#fff;transition:width 0.6s ease;}
+.bar-meta{font-size:12px;color:var(--muted);width:80px;text-align:right;flex-shrink:0;}
+
+/* PLACEMENT GRID */
+.placement-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+.placement-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.placement-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px;}
+.placement-metric{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.placement-metric-label{font-size:12px;color:var(--muted);}
+.placement-metric-value{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;}
+
+/* STEP CARDS */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;}
+.step-priority{display:inline-block;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;margin-bottom:12px;}
+.priority-urgent{background:rgba(239,68,68,0.15);color:var(--bad);}
+.priority-important{background:rgba(245,158,11,0.15);color:var(--warn);}
+.priority-mid{background:rgba(124,58,237,0.15);color:#a78bfa;}
+.step-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px;}
+.step-body{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* INSIGHT BOX */
+.insight{border-left:3px solid var(--accent);padding:12px 16px;background:rgba(0,212,170,0.05);border-radius:0 8px 8px 0;font-size:13px;color:var(--muted);margin-top:16px;}
+.insight strong{color:var(--text);}
+
+/* CONCLUSION */
+.conclusion-text{font-size:clamp(15px,1.8vw,18px);line-height:1.8;color:var(--muted);max-width:820px;}
+.conclusion-text strong{color:var(--text);}
+
+/* FOOTER */
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:32px clamp(16px,6vw,80px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.15em;}
+.footer-credits{font-size:12px;color:var(--muted);}
+.footer-credits a{color:var(--accent);text-decoration:none;}
+
+/* VIDEO FUNNEL */
+.vid-funnel{display:flex;flex-direction:column;gap:8px;max-width:500px;}
+.vid-row{display:flex;align-items:center;gap:12px;}
+.vid-label{font-size:12px;color:var(--muted);width:80px;flex-shrink:0;}
+.vid-bar{flex:1;background:rgba(255,255,255,0.06);border-radius:4px;height:22px;overflow:hidden;}
+.vid-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:11px;font-weight:700;color:#fff;}
+.vid-pct{font-size:12px;color:var(--muted);width:50px;text-align:right;}
+
+/* AD CARD */
+.ad-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.ad-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;position:relative;}
+.ad-card-title{font-size:13px;font-weight:600;margin-bottom:14px;line-height:1.4;padding-right:60px;}
+.ad-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.ad-metric{text-align:center;}
+.ad-metric-val{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;}
+.ad-metric-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.ad-rank-badge{position:absolute;top:16px;right:16px;}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:32px 0;}
+
+@media(max-width:600px){
+  .header-meta{grid-template-columns:1fr 1fr;}
+  .kpi-grid{grid-template-columns:1fr 1fr;}
+  .bar-label{width:50px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-logo">B O N A B O L A</div>
+  <div class="topbar-badge">Marzo 2026 · Meta Ads · España</div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Navy Marketing · Reporte de rendimiento</div>
+  <h1 class="header-title">Meta Ads<br/><span>Marzo 2026</span></h1>
+  <p class="header-sub">Análisis completo de campaña de Reconocimiento de Marca — Tráfico a Perfil de Instagram &amp; Calentamiento de Cuenta. Mercado: España.</p>
+  <div class="header-meta">
+    <div class="header-meta-item">
+      <div class="header-meta-label">Periodo</div>
+      <div class="header-meta-value">01 – 31 Mar 2026</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="header-meta-label">Mercado</div>
+      <div class="header-meta-value">España 🇪🇸</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="header-meta-label">Moneda</div>
+      <div class="header-meta-value">EUR €</div>
+    </div>
+    <div class="header-meta-item">
+      <div class="header-meta-label">Objetivo</div>
+      <div class="header-meta-value">Reconocimiento de marca</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 RESUMEN EJECUTIVO -->
+<div class="section">
+  <div class="section-number">01</div>
+  <h2 class="section-heading">Resumen Ejecutivo</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Gasto Total</div>
+      <div class="kpi-value">€211,76</div>
+      <div class="kpi-sub">2 conjuntos · €10/día Broad + €7/día Pádel</div>
+      <div class="kpi-badge badge-info">Tráfico a perfil · Interacción</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent3)">
+      <div class="kpi-label">Impresiones</div>
+      <div class="kpi-value">98.673</div>
+      <div class="kpi-sub">Alcance único: 68.487 personas</div>
+      <div class="kpi-badge badge-good">✓ Cobertura sólida</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--good)">
+      <div class="kpi-label">Frecuencia</div>
+      <div class="kpi-value">1,31×</div>
+      <div class="kpi-sub">Media ponderada campaña</div>
+      <div class="kpi-badge badge-good">✓ Sin saturación</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent2)">
+      <div class="kpi-label">CPM</div>
+      <div class="kpi-value">€2,15</div>
+      <div class="kpi-sub">Coste por 1.000 impresiones</div>
+      <div class="kpi-badge badge-good">✓ Muy eficiente</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Resultados (Visitas)</div>
+      <div class="kpi-value">6.800</div>
+      <div class="kpi-sub">Visitas al perfil de Instagram</div>
+      <div class="kpi-badge badge-good">✓ Objetivo cumplido</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--good)">
+      <div class="kpi-label">CPR (Coste/Resultado)</div>
+      <div class="kpi-value">€0,031</div>
+      <div class="kpi-sub">Por visita al perfil</div>
+      <div class="kpi-badge badge-good">✓ Excelente</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent3)">
+      <div class="kpi-label">CTR enlace medio</div>
+      <div class="kpi-value">6,94%</div>
+      <div class="kpi-sub">Tasa clic en enlace</div>
+      <div class="kpi-badge badge-good">✓ Alto para TOFU</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--warn)">
+      <div class="kpi-label">Clics en Enlace</div>
+      <div class="kpi-value">6.873</div>
+      <div class="kpi-sub">Total clics en enlace</div>
+      <div class="kpi-badge badge-good">✓ Volumen alto</div>
+    </div>
+  </div>
+
+  <div class="alert alert-good"><strong>✓ Contexto del mes:</strong> El objetivo de marzo fue generar reconocimiento de marca, alcance e interacción mediante campañas de tráfico al perfil de Instagram — calentando la cuenta y construyendo una primera audiencia cualificada. Los números confirman que el setup fue correcto: coste por resultado bajo, frecuencia sana y alta cobertura para ser el primer mes de campaña.</div>
+  <div class="alert alert-info"><strong>ℹ Nota:</strong> En esta fase no hay campañas de conversión ni BOFU activas. Los KPIs de ROAS, compras y checkout no aplican para este periodo. El foco es 100% notoriedad, alcance e interacción con el perfil.</div>
+</div>
+
+<!-- 02 RENDIMIENTO POR CONJUNTO DE ANUNCIOS -->
+<div class="section">
+  <div class="section-number">02</div>
+  <h2 class="section-heading">Conjuntos de Anuncios</h2>
+
+  <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">AUDIENCIA BROAD</div>
+      <div class="kpi-value">€105,86</div>
+      <div class="kpi-sub">50.325 impresiones · Alcance 39.920</div>
+      <div class="kpi-badge badge-active badge-good">✓ ACTIVO</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent3)">
+      <div class="kpi-label">AUDIENCIA PÁDEL</div>
+      <div class="kpi-value">€105,90</div>
+      <div class="kpi-sub">48.348 impresiones · Alcance 39.672</div>
+      <div class="kpi-badge badge-warn">⚠ PAUSADO</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Conjunto de Anuncios</th>
+          <th>Estado</th>
+          <th>Gasto</th>
+          <th>Impresiones</th>
+          <th>Alcance</th>
+          <th>Frecuencia</th>
+          <th>Resultados</th>
+          <th>CTR enlace</th>
+          <th>CPM</th>
+          <th>CPR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>AUDIENCIA BROAD</strong><br/><span class="tag tag-broad">Broad</span></td>
+          <td><span class="tag tag-active">Activo</span></td>
+          <td class="num">€105,86</td>
+          <td class="num">50.325</td>
+          <td class="num">39.920</td>
+          <td class="num">1,19×</td>
+          <td class="num">3.411</td>
+          <td class="num">6,51%</td>
+          <td class="num">€2,26</td>
+          <td class="num">€0,031</td>
+        </tr>
+        <tr>
+          <td><strong>AUDIENCIA PÁDEL</strong><br/><span class="tag tag-padel">Intereses Pádel</span></td>
+          <td><span class="tag tag-inactive">Pausado</span></td>
+          <td class="num">€105,90</td>
+          <td class="num">48.348</td>
+          <td class="num">39.672</td>
+          <td class="num">1,17×</td>
+          <td class="num">3.389</td>
+          <td class="num">6,58%</td>
+          <td class="num">€2,14</td>
+          <td class="num">€0,031</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight">
+    <strong>Insight clave:</strong> Ambos conjuntos obtienen prácticamente el mismo coste por resultado (€0,031) y CTR muy similar (6,5% vs 6,6%). La audiencia Pádel tiene CPM ligeramente inferior (€2,14 vs €2,26), lo que sugiere que el inventario de intereses pádel es algo más barato. Sin diferencias de rendimiento significativas en TOFU.
+  </div>
+</div>
+
+<!-- 03 ANÁLISIS DEMOGRÁFICO -->
+<div class="section">
+  <div class="section-number">03</div>
+  <h2 class="section-heading">Análisis Demográfico</h2>
+
+  <!-- BY GENDER -->
+  <h3 style="font-family:'Syne',sans-serif;font-size:18px;margin-bottom:20px;color:var(--muted);">Género</h3>
+  <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:40px;">
+    <div class="kpi-card" style="--accent-color:#3b82f6">
+      <div class="kpi-label"><span class="tag tag-male">Hombre</span></div>
+      <div class="kpi-value" style="color:#93c5fd">€193,39</div>
+      <div class="kpi-sub">90.456 impresiones · Alcance 61.567</div>
+      <div class="kpi-sub" style="margin-top:4px;">CTR: 6,98% · CPM: €2,14 · Frec: 1,47×</div>
+      <div class="kpi-badge badge-info">91,3% del gasto</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:#ec4899">
+      <div class="kpi-label"><span class="tag tag-female">Mujer</span></div>
+      <div class="kpi-value" style="color:#f9a8d4">€16,44</div>
+      <div class="kpi-sub">7.351 impresiones · Alcance 6.238</div>
+      <div class="kpi-sub" style="margin-top:4px;">CTR: 6,98% · CPM: €2,24 · Frec: 1,18×</div>
+      <div class="kpi-badge badge-warn">7,8% del gasto</div>
+    </div>
+  </div>
+
+  <div class="alert alert-warn"><strong>⚠ Desequilibrio hombre/mujer:</strong> El 91,3% del gasto se concentra en hombres. Ambos géneros muestran CTR idéntico (6,98%), lo que indica que el contenido resuena igual en ambos. El algoritmo optimiza hacia hombres probablemente porque hay más volumen de audiencia activa en pádel. Se recomienda evaluar si activar una línea diferenciada hacia mujer tiene sentido estratégico, especialmente para el textil.</div>
+
+  <div class="divider"></div>
+
+  <!-- BY AGE -->
+  <h3 style="font-family:'Syne',sans-serif;font-size:18px;margin-bottom:20px;color:var(--muted);">Edad — Gasto &amp; Resultados</h3>
+
+  <div class="bar-section">
+    <div class="bar-row">
+      <div class="bar-label">18–24</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:2.2%;background:linear-gradient(90deg,var(--accent3),#a78bfa);">€4,64</div>
+      </div>
+      <div class="bar-meta">141 res.</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">25–34</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:15.6%;background:linear-gradient(90deg,var(--accent),#00b8a0);">€32,97</div>
+      </div>
+      <div class="bar-meta">1.000 res.</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">35–44</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:29.2%;background:linear-gradient(90deg,var(--accent),#00b8a0);">€61,91</div>
+      </div>
+      <div class="bar-meta">1.888 res.</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">45–54</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:32.8%;background:linear-gradient(90deg,var(--accent2),#ff8a5b);">€69,38</div>
+      </div>
+      <div class="bar-meta">2.236 res.</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">55–64</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:15.7%;background:linear-gradient(90deg,var(--warn),#fbbf24);">€33,15</div>
+      </div>
+      <div class="bar-meta">1.123 res.</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">65+</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:4.6%;background:linear-gradient(90deg,var(--muted),#4b5680);">€9,70</div>
+      </div>
+      <div class="bar-meta">412 res.</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Edad</th>
+          <th>Gasto</th>
+          <th>Impresiones</th>
+          <th>Frecuencia</th>
+          <th>CTR enlace</th>
+          <th>CPM</th>
+          <th>CPR</th>
+          <th>Resultados</th>
+          <th>% Gasto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>18–24</strong></td>
+          <td class="num">€4,64</td>
+          <td class="num">3.447</td>
+          <td class="num">1,41×</td>
+          <td class="num">4,03%</td>
+          <td class="num">€1,35</td>
+          <td class="num">€0,033</td>
+          <td class="num">141</td>
+          <td class="num">2,2%</td>
+        </tr>
+        <tr>
+          <td><strong>25–34</strong></td>
+          <td class="num">€32,97</td>
+          <td class="num">21.960</td>
+          <td class="num">1,39×</td>
+          <td class="num">4,59%</td>
+          <td class="num">€1,50</td>
+          <td class="num">€0,033</td>
+          <td class="num">1.000</td>
+          <td class="num">15,6%</td>
+        </tr>
+        <tr style="background:rgba(0,212,170,0.04)">
+          <td><strong>35–44</strong> <span class="kpi-badge badge-good" style="font-size:9px;">TOP</span></td>
+          <td class="num">€61,91</td>
+          <td class="num">32.537</td>
+          <td class="num">1,41×</td>
+          <td class="num">5,87%</td>
+          <td class="num">€1,90</td>
+          <td class="num">€0,033</td>
+          <td class="num">1.888</td>
+          <td class="num">29,2%</td>
+        </tr>
+        <tr style="background:rgba(0,212,170,0.04)">
+          <td><strong>45–54</strong> <span class="kpi-badge badge-good" style="font-size:9px;">TOP</span></td>
+          <td class="num">€69,38</td>
+          <td class="num">26.475</td>
+          <td class="num">1,33×</td>
+          <td class="num">8,58%</td>
+          <td class="num">€2,62</td>
+          <td class="num">€0,031</td>
+          <td class="num">2.236</td>
+          <td class="num">32,8%</td>
+        </tr>
+        <tr>
+          <td><strong>55–64</strong></td>
+          <td class="num">€33,15</td>
+          <td class="num">10.951</td>
+          <td class="num">1,28×</td>
+          <td class="num">10,31%</td>
+          <td class="num">€3,03</td>
+          <td class="num">€0,030</td>
+          <td class="num">1.123</td>
+          <td class="num">15,7%</td>
+        </tr>
+        <tr>
+          <td><strong>65+</strong></td>
+          <td class="num">€9,70</td>
+          <td class="num">3.302</td>
+          <td class="num">1,27×</td>
+          <td class="num">12,54%</td>
+          <td class="num">€2,94</td>
+          <td class="num">€0,024</td>
+          <td class="num">412</td>
+          <td class="num">4,6%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight">
+    <strong>Dato clave por edad:</strong> El CTR crece de forma progresiva con la edad — los mayores de 45 años tienen CTR del 8,6%–12,5% frente al 4% de los 18–24. Paradójicamente, el CPM también sube con la edad, pero el CPR más bajo (€0,024 en 65+) indica que los segmentos senior están respondiendo mejor por euro invertido. Los tramos <strong>35–54</strong> concentran el 62% del gasto y generan el mayor volumen de resultados, alineados con el buyer persona de Bonabola.
+  </div>
+</div>
+
+<!-- 04 PLACEMENT -->
+<div class="section">
+  <div class="section-number">04</div>
+  <h2 class="section-heading">Placements &amp; Formatos</h2>
+
+  <div class="placement-grid">
+    <div class="placement-card">
+      <div class="placement-name"><span class="tag tag-stories">Instagram Stories</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Gasto</span><span class="placement-metric-value num">€201,86</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Impresiones</span><span class="placement-metric-value num">94.513</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CTR enlace</span><span class="placement-metric-value num">7,11%</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CPM</span><span class="placement-metric-value num">€2,14</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Resultados</span><span class="placement-metric-value num">6.648</span></div>
+      <div class="kpi-badge badge-good" style="margin-top:8px;">✓ Placement dominante — 95,3% del gasto</div>
+    </div>
+    <div class="placement-card">
+      <div class="placement-name"><span class="tag tag-reels">Instagram Reels</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Gasto</span><span class="placement-metric-value num">€5,41</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Impresiones</span><span class="placement-metric-value num">2.523</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CTR enlace</span><span class="placement-metric-value num">3,29%</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CPM</span><span class="placement-metric-value num">€2,14</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Resultados</span><span class="placement-metric-value num">85</span></div>
+      <div class="kpi-badge badge-warn" style="margin-top:8px;">CTR menor vs Stories</div>
+    </div>
+    <div class="placement-card">
+      <div class="placement-name"><span class="tag tag-feed">Instagram Feed</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Gasto</span><span class="placement-metric-value num">€4,49</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Impresiones</span><span class="placement-metric-value num">1.627</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CTR enlace</span><span class="placement-metric-value num">4,18%</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CPM</span><span class="placement-metric-value num">€2,76</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Resultados</span><span class="placement-metric-value num">66</span></div>
+      <div class="kpi-badge badge-warn" style="margin-top:8px;">CPM más alto — menor eficiencia</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Stories domina completamente:</strong> El 95,3% del presupuesto fue a Stories y entregó el 97,7% de los resultados al CPM más bajo (€2,14). Reels y Feed tienen volúmenes marginales pero Reels iguala en CPM. El formato Stories es el más eficiente para este tipo de campaña de calentamiento — lógico dado que el isotipo/vídeo vertical encaja perfectamente en ese placement.
+  </div>
+</div>
+
+<!-- 05 ANÁLISIS DE CREATIVIDADES -->
+<div class="section">
+  <div class="section-number">05</div>
+  <h2 class="section-heading">Análisis de Creatividades</h2>
+
+  <div class="ad-cards">
+
+    <div class="ad-card">
+      <div class="ad-rank-badge"><span class="ad-rank rank-top">🏆 TOP 1</span></div>
+      <div class="ad-card-title">Bonabola is born here.</div>
+      <div class="ad-metrics">
+        <div class="ad-metric">
+          <div class="ad-metric-val" style="color:var(--accent)">€201,75</div>
+          <div class="ad-metric-lbl">Gasto</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">6.602</div>
+          <div class="ad-metric-lbl">Resultados</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val" style="color:var(--good)">€0,034</div>
+          <div class="ad-metric-lbl">CPR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">94.538</div>
+          <div class="ad-metric-lbl">Impresiones</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val" style="color:var(--accent)">6,57%</div>
+          <div class="ad-metric-lbl">CTR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">41,7%</div>
+          <div class="ad-metric-lbl">VTR 3s</div>
+        </div>
+      </div>
+      <div class="kpi-badge badge-good" style="margin-top:12px;">97% de todos los resultados</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-rank-badge"><span class="ad-rank rank-top">TOP 2</span></div>
+      <div class="ad-card-title" style="font-size:11px;">"During this process, the tubular frame is carefully impregnated with resin…"</div>
+      <div class="ad-metrics">
+        <div class="ad-metric">
+          <div class="ad-metric-val">€9,14</div>
+          <div class="ad-metric-lbl">Gasto</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">186</div>
+          <div class="ad-metric-lbl">Resultados</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val" style="color:var(--warn)">€0,055</div>
+          <div class="ad-metric-lbl">CPR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">3.698</div>
+          <div class="ad-metric-lbl">Impresiones</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">5,25%</div>
+          <div class="ad-metric-lbl">CTR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">40,1%</div>
+          <div class="ad-metric-lbl">VTR 3s</div>
+        </div>
+      </div>
+      <div class="kpi-badge badge-warn" style="margin-top:12px;">Proceso artesanal — CPR mayor</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-rank-badge"><span class="ad-rank rank-bot">LOW</span></div>
+      <div class="ad-card-title">"We change the game. We change the way padel is understood."</div>
+      <div class="ad-metrics">
+        <div class="ad-metric">
+          <div class="ad-metric-val">€0,46</div>
+          <div class="ad-metric-lbl">Gasto</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">7</div>
+          <div class="ad-metric-lbl">Resultados</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val" style="color:var(--bad)">€0,069</div>
+          <div class="ad-metric-lbl">CPR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">161</div>
+          <div class="ad-metric-lbl">Impresiones</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">5,78%</div>
+          <div class="ad-metric-lbl">CTR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">40,4%</div>
+          <div class="ad-metric-lbl">VTR 3s</div>
+        </div>
+      </div>
+      <div class="kpi-badge badge-bad" style="margin-top:12px;">Bajo volumen — sin datos concluyentes</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-rank-badge"><span class="ad-rank rank-bot">LOW</span></div>
+      <div class="ad-card-title">"change the game con bonabola"</div>
+      <div class="ad-metrics">
+        <div class="ad-metric">
+          <div class="ad-metric-val">€0,38</div>
+          <div class="ad-metric-lbl">Gasto</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">6</div>
+          <div class="ad-metric-lbl">Resultados</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val" style="color:var(--bad)">€0,060</div>
+          <div class="ad-metric-lbl">CPR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">187</div>
+          <div class="ad-metric-lbl">Impresiones</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">3,47%</div>
+          <div class="ad-metric-lbl">CTR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">44,3%</div>
+          <div class="ad-metric-lbl">VTR 3s</div>
+        </div>
+      </div>
+      <div class="kpi-badge badge-bad" style="margin-top:12px;">Menor CTR — sin datos suficientes</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-rank-badge"><span class="ad-rank rank-bot">SIN DATA</span></div>
+      <div class="ad-card-title">"Cut, layers, precision, control. Made in Spain."</div>
+      <div class="ad-metrics">
+        <div class="ad-metric">
+          <div class="ad-metric-val">€0,03</div>
+          <div class="ad-metric-lbl">Gasto</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">0</div>
+          <div class="ad-metric-lbl">Resultados</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val" style="color:var(--muted)">—</div>
+          <div class="ad-metric-lbl">CPR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">89</div>
+          <div class="ad-metric-lbl">Impresiones</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val" style="color:var(--muted)">—</div>
+          <div class="ad-metric-lbl">CTR</div>
+        </div>
+        <div class="ad-metric">
+          <div class="ad-metric-val">44,3%</div>
+          <div class="ad-metric-lbl">VTR 3s</div>
+        </div>
+      </div>
+      <div class="kpi-badge badge-bad" style="margin-top:12px;">Sin impresiones suficientes — no concluyente</div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VIDEO METRICS -->
+  <h3 style="font-family:'Syne',sans-serif;font-size:18px;margin-bottom:20px;color:var(--muted);">Métricas de Vídeo — Retención de Audiencia</h3>
+  <div class="vid-funnel" style="max-width:600px;">
+    <div class="vid-row">
+      <div class="vid-label">Impresiones</div>
+      <div class="vid-bar"><div class="vid-fill" style="width:100%;background:var(--surface);border:1px solid var(--border);color:var(--muted);">98.673</div></div>
+      <div class="vid-pct">100%</div>
+    </div>
+    <div class="vid-row">
+      <div class="vid-label">VTR 3s</div>
+      <div class="vid-bar"><div class="vid-fill" style="width:39.8%;background:linear-gradient(90deg,var(--accent),#00b8a0);">39.305</div></div>
+      <div class="vid-pct">39,8%</div>
+    </div>
+    <div class="vid-row">
+      <div class="vid-label">Al 25%</div>
+      <div class="vid-bar"><div class="vid-fill" style="width:24.2%;background:linear-gradient(90deg,var(--accent3),#a78bfa);">23.897</div></div>
+      <div class="vid-pct">24,2%</div>
+    </div>
+    <div class="vid-row">
+      <div class="vid-label">Al 50%</div>
+      <div class="vid-bar"><div class="vid-fill" style="width:18.7%;background:linear-gradient(90deg,var(--warn),#fbbf24);">18.460</div></div>
+      <div class="vid-pct">18,7%</div>
+    </div>
+    <div class="vid-row">
+      <div class="vid-label">Al 100%</div>
+      <div class="vid-bar"><div class="vid-fill" style="width:12.4%;background:linear-gradient(90deg,var(--accent2),#ff8a5b);">12.204</div></div>
+      <div class="vid-pct">12,4%</div>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:20px;">
+    <strong>Retención de vídeo:</strong> El 39,8% de las impresiones superan los 3 segundos — cifra muy sólida para TOFU. El 31% de quienes inician el vídeo lo ven completo (12.204 / 39.305), lo que indica que el contenido artesanal engancha a quien decide detener el scroll. El ganador claro es <strong>"Bonabola is born here."</strong> con un VTR 3s del 41,7%, siendo el único anuncio con suficiente volumen para extraer conclusiones fiables.
+  </div>
+
+  <div class="table-wrap" style="margin-top:24px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Anuncio</th>
+          <th>Gasto</th>
+          <th>Impr.</th>
+          <th>Resultados</th>
+          <th>CPR</th>
+          <th>CTR enlace</th>
+          <th>VTR 3s</th>
+          <th>Ranking</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:rgba(0,212,170,0.04)">
+          <td><strong>Bonabola is born here.</strong></td>
+          <td class="num">€201,75</td>
+          <td class="num">94.538</td>
+          <td class="num">6.602</td>
+          <td class="num" style="color:var(--good)">€0,034</td>
+          <td class="num">6,57%</td>
+          <td class="num">41,7%</td>
+          <td><span class="ad-rank rank-top">🏆 TOP</span></td>
+        </tr>
+        <tr>
+          <td><strong style="font-size:12px;">During this process… resin</strong></td>
+          <td class="num">€9,14</td>
+          <td class="num">3.698</td>
+          <td class="num">186</td>
+          <td class="num" style="color:var(--warn)">€0,055</td>
+          <td class="num">5,25%</td>
+          <td class="num">40,1%</td>
+          <td><span class="ad-rank rank-top" style="background:rgba(245,158,11,0.15);color:var(--warn);">2º</span></td>
+        </tr>
+        <tr>
+          <td><strong>We change the game…</strong></td>
+          <td class="num">€0,46</td>
+          <td class="num">161</td>
+          <td class="num">7</td>
+          <td class="num" style="color:var(--bad)">€0,069</td>
+          <td class="num">5,78%</td>
+          <td class="num">40,4%</td>
+          <td><span class="ad-rank rank-bot">Sin data</span></td>
+        </tr>
+        <tr>
+          <td><strong>change the game con bonabola</strong></td>
+          <td class="num">€0,38</td>
+          <td class="num">187</td>
+          <td class="num">6</td>
+          <td class="num" style="color:var(--bad)">€0,060</td>
+          <td class="num">3,47%</td>
+          <td class="num">44,3%</td>
+          <td><span class="ad-rank rank-bot">Sin data</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cut, layers, precision…</strong></td>
+          <td class="num">€0,03</td>
+          <td class="num">89</td>
+          <td class="num">0</td>
+          <td class="num" style="color:var(--muted)">—</td>
+          <td class="num">—</td>
+          <td class="num">44,3%</td>
+          <td><span class="ad-rank rank-bot">Sin data</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-warn" style="margin-top:16px;"><strong>⚠ Importante:</strong> 4 de los 5 anuncios tienen menos de 500 impresiones totales y no han recibido presupuesto suficiente para ser evaluados. El algoritmo concentró el 95%+ en "Bonabola is born here." En abril estructuraremos un test A/B controlado para obtener datos comparables de todas las creatividades.</div>
+</div>
+
+<!-- 06 FRECUENCIA Y SATURACIÓN -->
+<div class="section">
+  <div class="section-number">06</div>
+  <h2 class="section-heading">Frecuencia &amp; Saturación</h2>
+
+  <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <div class="kpi-card" style="--accent-color:var(--good)">
+      <div class="kpi-label">Frecuencia Global</div>
+      <div class="kpi-value">1,31×</div>
+      <div class="kpi-sub">Media ponderada campaña</div>
+      <div class="kpi-badge badge-good">✓ Zona óptima TOFU</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Broad — Stories</div>
+      <div class="kpi-value">1,24×</div>
+      <div class="kpi-sub">Placement principal Broad</div>
+      <div class="kpi-badge badge-good">✓ Sin saturación</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--accent3)">
+      <div class="kpi-label">Pádel — Stories</div>
+      <div class="kpi-value">1,20×</div>
+      <div class="kpi-sub">Placement principal Pádel</div>
+      <div class="kpi-badge badge-good">✓ Sin saturación</div>
+    </div>
+    <div class="kpi-card" style="--accent-color:var(--warn)">
+      <div class="kpi-label">Frecuencia Max</div>
+      <div class="kpi-value">1,47×</div>
+      <div class="kpi-sub">Hombres (segmento mayor presupuesto)</div>
+      <div class="kpi-badge badge-good">✓ Margen amplio</div>
+    </div>
+  </div>
+
+  <div class="alert alert-good"><strong>✓ Excelente gestión de frecuencia:</strong> Ningún segmento supera 1,5× de frecuencia. El riesgo de saturación en marzo es prácticamente nulo. La cuenta tiene margen para escalar presupuesto sin comprometer la experiencia del usuario. El umbral de alerta para TOFU está en 3× — estamos muy lejos de él.</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Conjunto</th>
+          <th>Placement</th>
+          <th>Frecuencia</th>
+          <th>Impresiones</th>
+          <th>Gasto</th>
+          <th>CTR</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-broad">Broad</span></td>
+          <td><span class="tag tag-stories">Stories</span></td>
+          <td class="num">1,24×</td>
+          <td class="num">48.415</td>
+          <td class="num">€101,45</td>
+          <td class="num">6,98%</td>
+          <td><span class="kpi-badge badge-good">✓ Óptimo</span></td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-broad">Broad</span></td>
+          <td><span class="tag tag-reels">Reels</span></td>
+          <td class="num">1,18×</td>
+          <td class="num">1.148</td>
+          <td class="num">€2,34</td>
+          <td class="num">2,87%</td>
+          <td><span class="kpi-badge badge-good">✓ Óptimo</span></td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-broad">Broad</span></td>
+          <td><span class="tag tag-feed">Feed</span></td>
+          <td class="num">1,25×</td>
+          <td class="num">757</td>
+          <td class="num">€2,07</td>
+          <td class="num">4,36%</td>
+          <td><span class="kpi-badge badge-good">✓ Óptimo</span></td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-padel">Pádel</span></td>
+          <td><span class="tag tag-stories">Stories</span></td>
+          <td class="num">1,20×</td>
+          <td class="num">46.098</td>
+          <td class="num">€100,41</td>
+          <td class="num">7,25%</td>
+          <td><span class="kpi-badge badge-good">✓ Óptimo</span></td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-padel">Pádel</span></td>
+          <td><span class="tag tag-reels">Reels</span></td>
+          <td class="num">1,21×</td>
+          <td class="num">1.375</td>
+          <td class="num">€3,07</td>
+          <td class="num">3,64%</td>
+          <td><span class="kpi-badge badge-good">✓ Óptimo</span></td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-padel">Pádel</span></td>
+          <td><span class="tag tag-feed">Feed</span></td>
+          <td class="num">1,23×</td>
+          <td class="num">870</td>
+          <td class="num">€2,42</td>
+          <td class="num">4,02%</td>
+          <td><span class="kpi-badge badge-good">✓ Óptimo</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 07 BUYER PERSONA -->
+<div class="section">
+  <div class="section-number">07</div>
+  <h2 class="section-heading">Buyer Persona por Segmento</h2>
+  <p style="color:var(--muted);margin-bottom:32px;font-size:14px;">Perfil de la audiencia que mejor ha respondido a los anuncios en marzo. Mercado único: España 🇪🇸</p>
+
+  <div class="placement-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+
+    <div class="placement-card" style="border-top:3px solid var(--accent)">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px;margin-bottom:4px;">Perfil Principal</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">El que más convierte</div>
+      <div class="placement-metric"><span class="placement-metric-label">Género</span><span class="placement-metric-value"><span class="tag tag-male">Hombre</span></span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Edad</span><span class="placement-metric-value num">45–54</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CTR</span><span class="placement-metric-value num" style="color:var(--good)">8,58%</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CPR</span><span class="placement-metric-value num">€0,031</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Resultados</span><span class="placement-metric-value num">2.236</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:12px;border-top:1px solid var(--border);padding-top:10px;">Pádel como estilo de vida. Poder adquisitivo medio-alto. El más afín al posicionamiento Bonabola.</div>
+    </div>
+
+    <div class="placement-card" style="border-top:3px solid var(--accent3)">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px;margin-bottom:4px;">Perfil Secundario</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">Alto volumen y engagement</div>
+      <div class="placement-metric"><span class="placement-metric-label">Género</span><span class="placement-metric-value"><span class="tag tag-male">Hombre</span></span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Edad</span><span class="placement-metric-value num">35–44</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CTR</span><span class="placement-metric-value num" style="color:var(--good)">5,87%</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CPR</span><span class="placement-metric-value num">€0,033</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Resultados</span><span class="placement-metric-value num">1.888</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:12px;border-top:1px solid var(--border);padding-top:10px;">Mayor volumen de impresiones del período. Muy buen equilibrio entre coste y resultados.</div>
+    </div>
+
+    <div class="placement-card" style="border-top:3px solid #ec4899">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px;margin-bottom:4px;">Perfil Emergente</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">Oportunidad de crecimiento</div>
+      <div class="placement-metric"><span class="placement-metric-label">Género</span><span class="placement-metric-value"><span class="tag tag-female">Mujer</span></span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Edad</span><span class="placement-metric-value num">35–54</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CTR</span><span class="placement-metric-value num" style="color:var(--accent)">6,98%</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CPR</span><span class="placement-metric-value num">€0,031</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Gasto</span><span class="placement-metric-value num">€16,44</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:12px;border-top:1px solid var(--border);padding-top:10px;">Mismo CTR que hombre pero con inversión mínima. Alta oportunidad para línea textil y campañas específicas.</div>
+    </div>
+
+    <div class="placement-card" style="border-top:3px solid var(--warn)">
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px;margin-bottom:4px;">Sorpresa del mes</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">Mejor CPR — menor coste</div>
+      <div class="placement-metric"><span class="placement-metric-label">Género</span><span class="placement-metric-value"><span class="tag tag-male">Hombre</span></span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Edad</span><span class="placement-metric-value num">65+</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CTR</span><span class="placement-metric-value num" style="color:var(--good)">12,54%</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">CPR</span><span class="placement-metric-value num" style="color:var(--good)">€0,024</span></div>
+      <div class="placement-metric"><span class="placement-metric-label">Resultados</span><span class="placement-metric-value num">412</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:12px;border-top:1px solid var(--border);padding-top:10px;">CPR más bajo de toda la campaña. CTR altísimo. Volumen reducido pero señal interesante a monitorizar.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 08 NEXT STEPS -->
+<div class="section">
+  <div class="section-number">08</div>
+  <h2 class="section-heading">Next Steps Priorizados</h2>
+
+  <div class="steps-grid">
+
+    <div class="step-card">
+      <div class="step-priority priority-urgent">🔴 URGENTE</div>
+      <div class="step-title">Test A/B controlado de creatividades</div>
+      <div class="step-body">Los 4 anuncios alternativos no recibieron presupuesto suficiente para ser evaluados. En abril estructuraremos un test A/B controlado asignando presupuesto mínimo garantizado a cada creatividad (mismos placements, mismo periodo) para poder comparar VTR, CTR y CPR con datos reales y tomar decisiones basadas en evidencia.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-priority priority-urgent">🔴 URGENTE</div>
+      <div class="step-title">Activar MOFU con la audiencia caliente generada</div>
+      <div class="step-body">Con ~6.800 visitas al perfil, visitantes web y viewers de vídeo acumulados, ya tenemos masa crítica para activar el Middle of Funnel. Lanzaremos conjuntos dirigidos a video views 100%, visitantes web y seguidores de Instagram con contenido educativo sobre el proceso artesanal, decisiones técnicas y el configurador de palas.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-priority priority-important">🟡 IMPORTANTE</div>
+      <div class="step-title">Escalar hacia el segmento femenino</div>
+      <div class="step-body">El segmento mujer tiene el mismo CTR (6,98%) que el hombre pero solo recibió el 7,8% del presupuesto. En abril crearemos un conjunto específico para mujeres 30–50 años con creatividades orientadas al lifestyle y la ropa deportiva, aprovechando la señal positiva que ya nos está dando este segmento.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-priority priority-important">🟡 IMPORTANTE</div>
+      <div class="step-title">Trabajar el hook de los primeros 3 segundos</div>
+      <div class="step-body">Hay una caída notable de retención entre el 25% y el 50% de reproducción. Trabajaremos en reforzar el gancho visual de los primeros frames — texto sobreimpreso, acción inmediata o claim de marca visible desde el primer segundo — para aumentar la retención y ampliar el pool de audiencia caliente de cara al MOFU.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-priority priority-mid">🟣 MEJORA</div>
+      <div class="step-title">Test de Reels con creatividades adaptadas</div>
+      <div class="step-body">Reels tiene el mismo CPM que Stories (€2,14) pero un CTR inferior (3,3% vs 7,1%). Prepararemos versiones específicas para el formato Reels — ediciones más dinámicas y nativas — y las testaremos con presupuesto aislado para evaluar su potencial con el contenido correcto.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-priority priority-mid">🟣 MEJORA</div>
+      <div class="step-title">Seguimiento del segmento 65+</div>
+      <div class="step-body">El tramo 65+ ha mostrado el mejor CPR de toda la campaña (€0,024) y un CTR del 12,54%. Es una señal que monitorizaremos de cerca en abril para determinar si merece presupuesto propio o se integra dentro de una segmentación más amplia.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 09 CONCLUSIÓN -->
+<div class="section">
+  <div class="section-number">09</div>
+  <h2 class="section-heading">Conclusión</h2>
+  <p class="conclusion-text">
+    Marzo ha sido un mes de <strong>arranque limpio y eficiente</strong>. Con €211,76 de inversión, hemos alcanzado a más de <strong>68.000 personas únicas en España</strong>, generado casi 6.800 visitas al perfil de Instagram y construido una primera capa de audiencia caliente a un coste por resultado de tan solo <strong>€0,031</strong> — una de las métricas más sanas que puede mostrar una cuenta nueva en TOFU.
+  </p>
+  <br/>
+  <p class="conclusion-text">
+    El formato <strong>Stories es el canal ganador</strong> sin discusión, absorbiendo el 95% del gasto y entregando el 97% de los resultados al CPM más competitivo. La frecuencia se ha mantenido en 1,31× de media, lo que significa que hemos impactado a cada persona prácticamente una sola vez — exactamente lo que buscábamos en esta fase de calentamiento de cuenta.
+  </p>
+  <br/>
+  <p class="conclusion-text">
+    En cuanto al perfil demográfico, los datos confirman lo que ya anticipaba la estrategia: <strong>hombres de 35 a 54 años</strong> son el núcleo de la audiencia activa. El tramo 45–54 destaca especialmente por su CTR del 8,6%, alineado perfectamente con el buyer persona de Bonabola — alguien que entiende el pádel como parte de su estilo de vida y valora la artesanía y el diseño. La sorpresa del mes viene del segmento 65+, que ofrece el mejor CPR de toda la campaña y que seguiremos de cerca en abril.
+  </p>
+  <br/>
+  <p class="conclusion-text">
+    El único punto que ajustaremos de cara al siguiente mes es el <strong>testeo de creatividades</strong>: el algoritmo concentró prácticamente todo el presupuesto en un único anuncio (<em>"Bonabola is born here."</em>), dejando a los otros cuatro sin datos suficientes. Es el comportamiento natural de Meta en optimización automática, y en abril lo corregiremos estructurando un test A/B controlado con presupuesto asignado por anuncio para poder leer la data correctamente.
+  </p>
+  <br/>
+  <p class="conclusion-text">
+    La cuenta entra en abril con una <strong>base sólida</strong>: audiencias calientes construidas, un creative winner identificado, frecuencia sana y un algoritmo que ya sabe a quién optimizar. Ahora activamos el MOFU y empezamos a convertir ese interés en consideración real hacia la pala.
+  </p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">B O N A B O L A</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:4px;">Reporte Meta Ads · Marzo 2026 · España</div>
+  </div>
+  <div class="footer-credits">
+    Elaborado por <a href="mailto:carlos@navymarketing.es">Navy Marketing</a> · Carlos (Meta Ads) &amp; Nuria (Email Marketing)<br/>
+    <span style="font-size:10px;">carlos@navymarketing.es · nuria@navymarketing.es · 681 24 33 55</span>
+  </div>
+</div>
+
+</body>
+</html>
